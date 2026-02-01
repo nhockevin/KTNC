@@ -1,7 +1,9 @@
-package poly.testmaven;
+package poly;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import poly.testmaven.Calculator;
 
 public class CalculatorTest {
     Calculator cal = new Calculator();
