@@ -1,44 +1,35 @@
 package poly.testmaven;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class CalculatorTest {
-
     Calculator cal = new Calculator();
 
     @Test
-    void testAdd() {
-        assertEquals(5, cal.add(2, 3));
+    public void testAdd() {
+        // TestNG: assertEquals(actual, expected)
+        Assert.assertEquals(cal.add(5, 5), 10);
     }
 
     @Test
-    void testSubtract() {
-        assertEquals(1, cal.subtract(3, 2));
+    public void testSubtract() {
+        Assert.assertEquals(cal.subtract(10, 5), 5);
     }
 
     @Test
-    void testMultiply() {
-        assertEquals(6, cal.multiply(2, 3));
+    public void testMultiply() {
+        Assert.assertEquals(cal.multiply(2, 3), 6);
     }
 
     @Test
-    void testDivide() {
-        assertEquals(2, cal.divide(4, 2));
+    public void testDivide() {
+        Assert.assertEquals(cal.divide(10, 2), 5);
     }
 
-    @Test
-    void testDivideByZero() {
-        assertThrows(ArithmeticException.class, () -> {
-            cal.divide(4, 0);
-        });
+    // Kiểm tra lỗi chia cho 0 (Cú pháp TestNG rất ngắn gọn)
+    @Test(expectedExceptions = ArithmeticException.class)
+    public void testDivideByZero() {
+        cal.divide(10, 0);
     }
-    
-    @Test
-    void testAssertMore() {
-        assertTrue(cal.add(1, 1) == 2);
-        assertFalse(cal.subtract(5, 3) == 1);
-        assertNotEquals(10, cal.multiply(2, 3));
-    }
-
 }
