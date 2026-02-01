@@ -1,0 +1,24 @@
+name: Java CI with Maven
+
+on:
+  push:
+    branches: [ "main", "master" ] # Chạy khi bạn push lên bất kỳ nhánh nào trong 2 nhánh này
+  pull_request:
+    [cite_start]branches: [ "main", "master" ] # Chạy khi tạo pull request vào main/master [cite: 27]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 17 # Hoặc phiên bản Java bạn đang dùng cho project
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Build and Run Tests with Maven
+      run: mvn -B test --file pom.xml
