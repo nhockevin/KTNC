@@ -13,6 +13,6 @@ public class AppTest {
     
     @Test
     void testEvenNumberPass1() {
-        assertTrue(App.isEvenNumber(5));
+        assertTrue(App.isEvenNumber(6));
     }
 }
